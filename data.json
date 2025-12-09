@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ref-01",
+    "titulo": "Nome da Música",
+    "artista": "Artista Referência",
+    "analise_geral": "Cole aqui o resumo que o NotebookLM gerou sobre o conceito da obra.",
+    "versos": [
+      {
+        "verso": "Cole aqui a primeira frase da música",
+        "acorde": "C7M",
+        "analise_teorica": "Tônica. Estabelece a estabilidade inicial.",
+        "analise_lirica": "Introdução do cenário."
+      },
+      {
+        "verso": "Cole aqui a segunda frase da música",
+        "acorde": "Dm7",
+        "analise_teorica": "II grau menor. Prepara tensão suave.",
+        "analise_lirica": "Primeiro conflito narrativo."
+      }
+    ]
+  }
+]
