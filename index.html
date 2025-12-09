@@ -5,18 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratório Musical</title>
     <style>
-        body { font-family: sans-serif; display: flex; padding: 20px; gap: 20px; background: #f0f0f0; }
-        .letras-container { width: 40%; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .analise-painel { width: 60%; background: #333; color: white; padding: 20px; border-radius: 8px; position: sticky; top: 20px; height: fit-content; }
-        
-        .linha { margin-bottom: 15px; cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.2s; }
-        .linha:hover { background: #e0e0e0; }
-        .acorde { color: #d32f2f; font-weight: bold; font-size: 0.9em; display: block; }
-        .verso-texto { font-size: 1.1em; }
-        
-        h2 { border-bottom: 1px solid #555; padding-bottom: 10px; }
-        .tag { display: inline-block; background: #555; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin-right: 5px; }
-    </style>
+    /* Reset básico e Fontes */
+    body { 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        background-color: #121212; /* Fundo escurão */
+        color: #e0e0e0; 
+        display: flex; 
+        justify-content: center;
+        padding: 40px; 
+        gap: 40px; 
+        margin: 0;
+    }
+
+    /* Container Principal da Letra */
+    .letras-container { 
+        width: 45%; 
+        background: #1e1e1e; 
+        padding: 40px; 
+        border-radius: 12px; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        border: 1px solid #333;
+    }
+
+    /* Painel Lateral (Análise) */
+    .analise-painel { 
+        width: 35%; 
+        background: #252525; 
+        padding: 30px; 
+        border-radius: 12px; 
+        position: sticky; 
+        top: 40px; 
+        height: fit-content; 
+        border-left: 4px solid #bb86fc; /* Detalhe Roxo Neon */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    /* Títulos */
+    h1 { margin-top: 0; color: #ffffff; font-weight: 300; letter-spacing: 1px; }
+    h2 { color: #bb86fc; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid #444; padding-bottom: 10px;}
+    h3 { color: #888; font-weight: normal; margin-top: -15px; margin-bottom: 30px; }
+
+    /* As linhas da música */
+    .linha { 
+        margin-bottom: 20px; 
+        cursor: pointer; 
+        padding: 15px; 
+        border-radius: 8px; 
+        transition: all 0.3s ease; 
+        border-left: 3px solid transparent;
+    }
+
+    .linha:hover { 
+        background: #2a2a2a; 
+        border-left: 3px solid #03dac6; /* Verde água ao passar o mouse */
+        transform: translateX(5px);
+    }
+
+    /* Acordes */
+    .acorde { 
+        color: #03dac6; /* Verde água */
+        font-weight: bold; 
+        font-size: 0.9em; 
+        display: block; 
+        margin-bottom: 4px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .verso-texto { 
+        font-size: 1.15em; 
+        line-height: 1.4;
+        color: #fff;
+    }
+    
+    /* Tags dentro do painel */
+    .tag { 
+        display: inline-block; 
+        background: #333; 
+        color: #bbb;
+        padding: 4px 10px; 
+        border-radius: 4px; 
+        font-size: 0.75em; 
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    #txtTeoria, #txtLirica {
+        display: block;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+</style>
 </head>
 <body>
 
