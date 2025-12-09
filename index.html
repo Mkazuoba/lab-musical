@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratório Musical</title>
+    <style>
+        body { font-family: sans-serif; display: flex; padding: 20px; gap: 20px; background: #f0f0f0; }
+        .letras-container { width: 40%; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .analise-painel { width: 60%; background: #333; color: white; padding: 20px; border-radius: 8px; position: sticky; top: 20px; height: fit-content; }
+        
+        .linha { margin-bottom: 15px; cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.2s; }
+        .linha:hover { background: #e0e0e0; }
+        .acorde { color: #d32f2f; font-weight: bold; font-size: 0.9em; display: block; }
+        .verso-texto { font-size: 1.1em; }
+        
+        h2 { border-bottom: 1px solid #555; padding-bottom: 10px; }
+        .tag { display: inline-block; background: #555; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin-right: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="letras-container" id="containerLetras">
+        <h1>Carregando...</h1>
+    </div>
+
+    <div class="analise-painel" id="painelAnalise">
+        <h2>Laboratório de Análise</h2>
+        <p>Passe o mouse sobre os versos ao lado para ver a mágica acontecer.</p>
+        <div id="detalhes" style="display:none; margin-top: 20px;">
+            <p><span class="tag">Teoria</span> <span id="txtTeoria">...</span></p>
+            <p><span class="tag">Lírica</span> <span id="txtLirica">...</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Carrega o JSON
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const musica = data[0]; // Pega a primeira música
+                const container = document.getElementById('containerLetras');
+                
+                // Monta o cabeçalho
+                let html = `<h1>${musica.titulo}</h1><h3>${musica.artista}</h3><p><em>${musica.analise_geral}</em></p><hr>`;
+                
+                // Monta os versos
+                musica.versos.forEach(item => {
+                    html += `
+                        <div class="linha" onmouseover="mostrarAnalise('${item.analise_teorica}', '${item.analise_lirica}')">
+                            <span class="acorde">${item.acorde}</span>
+                            <span class="verso-texto">${item.verso}</span>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+            });
+
+        // Função que troca o texto do painel
+        function mostrarAnalise(teoria, lirica) {
+            document.getElementById('detalhes').style.display = 'block';
+            document.getElementById('txtTeoria').innerText = teoria;
+            document.getElementById('txtLirica').innerText = lirica;
+        }
+    </script>
+</body>
+</html>
